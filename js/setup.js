@@ -52,7 +52,7 @@
   var backpack = setupPlayer.querySelector('.setup-artifacts');
 
   setupShop.addEventListener('dragstart', function (evt) {
-    var magicArtifact = null;
+    var magicArtifact;
 
     evt.target.addEventListener('drag', function (evtDrag) {
       backpack.style.outline = '2px dashed red';
