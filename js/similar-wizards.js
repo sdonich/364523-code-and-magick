@@ -1,6 +1,6 @@
 'use strict';
 
-(function () {
+(function (global) {
 
   var similarWizardTemplate = document.querySelector('#similar-wizard-template').content;
   window.fragment = document.createDocumentFragment();
@@ -47,7 +47,7 @@
   };
 
   for (i = 0; i < wizards.length; i++) {
-    window.fragment.appendChild(renderWizard(wizards[i]));
+    global.fragment.appendChild(renderWizard(wizards[i]));
   }
 
-})();
+})(window);
