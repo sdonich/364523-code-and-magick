@@ -52,24 +52,23 @@
   var backpack = setupPlayer.querySelector('.setup-artifacts');
 
   setupShop.addEventListener('dragstart', function (evt) {
-    var magicArtifact = evt.target;
+    var magicArtifact = null;
 
-    magicArtifact.addEventListener('drag', function (evtDrag) {
+    evt.target.addEventListener('drag', function (evtDrag) {
       backpack.style.outline = '2px dashed red';
       magicArtifact = evtDrag.target;
     });
 
     backpack.addEventListener('drop', function (evtDrop) {
       evtDrop.preventDefault();
-      evtDrop.target.appendChild(magicArtifact);
+
+      if (magicArtifact !== null) {
+        evtDrop.target.appendChild(magicArtifact);
+      }
+
       backpack.style.outline = '';
       evtDrop.target.style.backgroundColor = '';
-
-      magicArtifact.addEventListener('dragend', function () {
-        backpack.style.outline = '';
-
-        magicArtifact = null;
-      });
+      magicArtifact = null;
     });
 
     backpack.addEventListener('dragenter', function (evtEnter) {
