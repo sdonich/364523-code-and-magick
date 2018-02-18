@@ -3,7 +3,7 @@
 (function (global) {
 
   var similarWizardTemplate = document.querySelector('#similar-wizard-template').content;
-  window.fragment = document.createDocumentFragment();
+  global.fragment = document.createDocumentFragment();
 
   var getRandom = function (quantity) {
     return Math.round(Math.random() * (quantity - 1));

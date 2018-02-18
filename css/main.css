@@ -1019,3 +1019,17 @@ input[type=radio]:checked + .review-mark-label
 
     opacity: 0;
 }
+
+.error {
+  position: absolute;
+  font-size: 25px;
+  width: 400px;
+  height: 100px;
+  top: 25%;
+  left: 25%;
+  padding-top: 50px;
+  padding-right: auto;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.7);
+}

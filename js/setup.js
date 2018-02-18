@@ -8,6 +8,10 @@
   var setupPlayer = document.querySelector('.setup-player');
   var form = document.querySelector('form');
 
+  var descriptError = function (elem) {
+    elem.remove();
+  };
+
   var openPopup = function () {
     userSetup.classList.remove('hidden');
     userSetup.querySelector('.setup-similar').classList.remove('hidden');
@@ -16,6 +20,25 @@
 
     similalListElement.appendChild(window.fragment);
     document.addEventListener('keydown', onPopupEscPress);
+
+    form.addEventListener('submit', function (evt) {
+      evt.preventDefault();
+
+      window.backend.save(new FormData(form), function () {
+        userSetup.classList.add('hidden');
+      },
+      function (error) {
+        var err = document.createElement('div');
+
+        userSetup.appendChild(err);
+        err.classList.add('error');
+        err.textContent = error;
+
+        setTimeout(function () {
+          descriptError(err);
+        }, 2000);
+      });
+    });
   };
 
   var closePopup = function () {
