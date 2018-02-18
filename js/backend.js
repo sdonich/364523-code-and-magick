@@ -64,7 +64,7 @@
       xhr.timeout = 10000;
 
       xhr.open('GET', URL_DATA);
-      xhr.sent();
+      xhr.send();
     }
   };
 
