@@ -68,6 +68,10 @@
     evt.target.addEventListener('drag', function (evtDrag) {
       backpack.style.outline = '2px dashed red';
       magicArtifact = evtDrag.target;
+
+      evt.target.addEventListener('dragend', function () {
+        backpack.style.outline = '';
+      });
     });
 
     backpack.addEventListener('drop', function (evtDrop) {
@@ -80,6 +84,7 @@
       backpack.style.outline = '';
       evtDrop.target.style.backgroundColor = '';
       magicArtifact = null;
+
     });
 
     backpack.addEventListener('dragenter', function (evtEnter) {
