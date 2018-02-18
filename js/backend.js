@@ -21,6 +21,7 @@
           default:
             error = 'Oops! Произошла ошибка: ' + xhr.status;
         }
+
         if (error) {
           onError(error);
         }
