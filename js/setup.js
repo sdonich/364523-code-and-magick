@@ -16,6 +16,17 @@
 
     similalListElement.appendChild(window.fragment);
     document.addEventListener('keydown', onPopupEscPress);
+
+    form.addEventListener('submit', function (evt) {
+      evt.preventDefault();
+
+      window.backend.save(new FormData(form), function () {
+        userSetup.classList.add('hidden');
+      },
+      function (error) {
+        window.descriptError(error);
+      });
+    });
   };
 
   var closePopup = function () {
@@ -57,6 +68,10 @@
     evt.target.addEventListener('drag', function (evtDrag) {
       backpack.style.outline = '2px dashed red';
       magicArtifact = evtDrag.target;
+
+      evt.target.addEventListener('dragend', function () {
+        backpack.style.outline = '';
+      });
     });
 
     backpack.addEventListener('drop', function (evtDrop) {
@@ -69,6 +84,7 @@
       backpack.style.outline = '';
       evtDrop.target.style.backgroundColor = '';
       magicArtifact = null;
+
     });
 
     backpack.addEventListener('dragenter', function (evtEnter) {
